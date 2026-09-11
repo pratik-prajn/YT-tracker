@@ -1,14 +1,6 @@
 # Channels — YouTube analytics dashboard
 
-One view per channel (Decoded, AI Seekho, Be10x Labs, AI for Techies): monthly targets and pace, top videos, topic lift, retention, and competitor tracking. Everything runs on free tiers with no credit card.
-
-| Layer | Service | Cost |
-|---|---|---|
-| Frontend | Next.js 15 static export on Cloudflare Pages | $0 |
-| Database + login | Supabase Free (Postgres, Google auth, RLS) | $0 |
-| Data sync | GitHub Actions cron → YouTube Data API v3 + Analytics API | $0 |
-| Topic tagging | Gemini API free tier (Flash), keyword fallback | $0 |
-| Alerts | Slack incoming webhook | $0 |
+One view per channel (Decoded, AI Seekho, Be10x Labs, AI for Techies): monthly targets and pace, top videos, topic lift, retention, and competitor tracking.
 
 ## Design
 
