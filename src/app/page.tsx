@@ -19,7 +19,7 @@ export default function Overview() {
     <>
       <header>
         <h1 className="display display-tight text-[40px] text-ink sm:text-[56px]">All channels</h1>
-        <p className="mt-2 text-muted">Last 28 days, with {monthLabel(period)} pace against target. Numbers refresh every six hours.</p>
+        <p className="mt-2 text-muted">Last 28 days, with {monthLabel(period)} pace against target. Numbers refresh every 15 minutes.</p>
       </header>
 
       <div className="mt-10">

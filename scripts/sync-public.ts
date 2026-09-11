@@ -1,5 +1,5 @@
 // Public data for ALL channels (own + competitors) via Data API v3.
-// Runs every 6 hours. Idempotent: upserts on (id, date).
+// Runs every 15 minutes. Idempotent: upserts on (id, date).
 import { db, today, chunk, must } from "./lib/db";
 import { channelsList, playlistVideoIds, videosList, isoToSeconds } from "./lib/youtube";
 import { quotaUsed } from "./lib/quota";

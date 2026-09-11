@@ -42,7 +42,7 @@ function Compare({ own }: { own: string }) {
 
       {comps.length === 0 ? (
         <div className="mt-10">
-          <Empty title="No competitors tracked yet" hint="Add channels by handle or URL in settings. They start syncing within six hours." action={<Link href="/settings/" className="rounded-full bg-tan px-5 py-2 text-cream">Add competitors</Link>} />
+          <Empty title="No competitors tracked yet" hint="Add channels by handle or URL in settings. They start syncing within 15 minutes." action={<Link href="/settings/" className="rounded-full bg-tan px-5 py-2 text-cream">Add competitors</Link>} />
         </div>
       ) : (
         <>

@@ -163,7 +163,7 @@ function Competitors({ channels }: { channels: Channel[] }) {
         <button onClick={add} disabled={busy || !own} className="rounded-full bg-tan px-5 py-2 text-cream hover:bg-tan-deep disabled:opacity-50">Add competitor</button>
       </div>
       {err && <p className="mt-2 text-sm text-bad">{err}</p>}
-      <p className="mt-2 text-sm text-muted">Details and numbers fill in on the next public sync (within six hours).</p>
+      <p className="mt-2 text-sm text-muted">Details and numbers fill in on the next public sync (within 15 minutes).</p>
       <div className="mt-5">
         {list.loading && <Loading />}
         {list.error && <ErrorBox message={list.error} />}

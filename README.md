@@ -42,7 +42,7 @@ npm run sync:public          # first snapshot
 ### 5. GitHub Actions
 Push the repo (private). In **Settings → Secrets and variables → Actions** add:
 `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `YOUTUBE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET`, `TOKEN_ENC_KEY`, `GEMINI_API_KEY`, `SLACK_WEBHOOK_URL`, and a variable `APP_URL`.
-The five workflows in `.github/workflows/` then run on schedule (public sync every 6 h, analytics + classify daily, Slack digest Mondays, storage roll-up Sundays). Trigger any of them manually from the Actions tab for a first run.
+The five workflows in `.github/workflows/` then run on schedule (public sync every 15 min, analytics + classify daily, Slack digest Mondays, storage roll-up Sundays). Trigger any of them manually from the Actions tab for a first run.
 
 ### 6. Cloudflare Pages
 Create a new project under **Workers & Pages → Pages → Connect to Git**, not under **Workers Builds**. If the current project shows `Worker Name`, it is the wrong project type for this app. Use framework **Next.js (Static HTML Export)**, build command `npm run build`, and output directory `out`. Do not use `npx wrangler deploy`, which selects the OpenNext Worker adapter and fails for this static export. Environment variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Add the resulting `*.pages.dev` URL to Supabase **Auth → URL configuration → Redirect URLs**.
@@ -53,7 +53,7 @@ For a manual deployment, authenticate Wrangler, set `CF_PAGES_PROJECT_NAME` to t
 
 - **Your channels**: Settings → paste a channel link (`youtube.com/@handle`, a `UC…` id, or just `@handle`). Public numbers start on the next sync. For private metrics (watch time, retention, CTR) also run `npm run connect-channel` with that owner signed in. `supabase/seed_channels.sql` pre-registers the four channels if you'd rather do it in SQL.
 - **Targets**: Settings → type the month's numbers per channel. Pace = actual ÷ where you should be today; projected month-end is shown on every channel.
-- **Competitors**: Settings → pick a channel → paste `@handle` or a channel URL. Resolved and synced within six hours.
+- **Competitors**: Settings → pick a channel → paste `@handle` or a channel URL. Resolved and synced within 15 minutes.
 - **Topics**: Settings → add a topic. New videos are tagged nightly; to re-tag history, empty `video_topics` and run the classify workflow.
 - **Reconnect**: if a channel shows a dot in the sidebar, its OAuth token was revoked. Run `npm run connect-channel` again for that owner.
 

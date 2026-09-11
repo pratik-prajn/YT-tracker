@@ -1,7 +1,7 @@
 name: Sync public YouTube data
 on:
   schedule:
-    - cron: "15 */6 * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 jobs:
   sync:
