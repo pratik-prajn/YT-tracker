@@ -45,9 +45,9 @@ Push the repo (private). In **Settings → Secrets and variables → Actions** a
 The five workflows in `.github/workflows/` then run on schedule (public sync every 6 h, analytics + classify daily, Slack digest Mondays, storage roll-up Sundays). Trigger any of them manually from the Actions tab for a first run.
 
 ### 6. Cloudflare Pages
-Connect the repo as a **Pages** project, not a Worker. Use framework **Next.js (Static HTML Export)**, build command `npm run build`, and output directory `out`. Leave the deploy command empty; do not use `npx wrangler deploy`, which selects the OpenNext Worker adapter and fails for this static export. Environment variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Add the resulting `*.pages.dev` URL to Supabase **Auth → URL configuration → Redirect URLs**.
+Create a new project under **Workers & Pages → Pages → Connect to Git**, not under **Workers Builds**. If the current project shows `Worker Name`, it is the wrong project type for this app. Use framework **Next.js (Static HTML Export)**, build command `npm run build`, and output directory `out`. Do not use `npx wrangler deploy`, which selects the OpenNext Worker adapter and fails for this static export. Environment variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Add the resulting `*.pages.dev` URL to Supabase **Auth → URL configuration → Redirect URLs**.
 
-For a manual deployment, authenticate Wrangler and run `npm run deploy:pages` (optionally add `--project-name <name>` to the `wrangler pages deploy out` command if the Pages project is not auto-detected).
+For a manual deployment, authenticate Wrangler, set `CF_PAGES_PROJECT_NAME` to the Pages project name, and run `npm run deploy:pages`. The command defaults to the project name `yt-tracker` and deploys the generated `out` directory.
 
 ## Day-to-day
 

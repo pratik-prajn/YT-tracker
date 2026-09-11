@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "deploy:pages": "npm run build && npx wrangler pages deploy out",
+    "deploy:pages": "npm run build && npx wrangler pages deploy out --project-name \"${CF_PAGES_PROJECT_NAME:-yt-tracker}\"",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "sync:public": "tsx scripts/sync-public.ts",
