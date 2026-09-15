@@ -41,11 +41,13 @@ function ChannelView({ id }: { id: string }) {
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="display display-tight text-[40px] text-ink sm:text-[56px]">{c.name}</h1>
-          <p className="mt-2 text-muted">
-            {fmt(c.subscribers)} subscribers · {fmt(c.total_views)} lifetime views · {c.video_count ?? "—"} videos
-            {c.as_of && <> · public data as of {shortDate(c.as_of)}</>}
-            {k?.as_of && <> · private data as of {shortDate(k.as_of)}</>}
-          </p>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2 text-muted">
+            <span className="whitespace-nowrap"><strong className="display tnum text-[32px] font-medium text-tan-deep sm:text-[42px]">{fmt(c.subscribers)}</strong> <span className="text-sm sm:text-base">subscribers</span></span>
+            <span className="whitespace-nowrap"><strong className="display tnum text-[32px] font-medium text-tan-deep sm:text-[42px]">{fmt(c.total_views)}</strong> <span className="text-sm sm:text-base">lifetime views</span></span>
+            <span className="text-sm sm:text-base">{c.video_count ?? "—"} videos</span>
+            {c.as_of && <span className="text-sm sm:text-base">public data as of {shortDate(c.as_of)}</span>}
+            {k?.as_of && <span className="text-sm sm:text-base">private data as of {shortDate(k.as_of)}</span>}
+          </div>
         </div>
         <Link href={`/competitors/?id=${id}`} className="rounded-full border border-tan px-5 py-2 text-tan-deep hover:bg-tan-tint">Competitors</Link>
       </header>
