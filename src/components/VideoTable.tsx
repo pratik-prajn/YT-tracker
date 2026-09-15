@@ -7,7 +7,7 @@ import { fmt, pct, daysAgo } from "@/lib/format";
 type Key = "views_window" | "velocity_48h" | "avg_view_pct" | "ctr" | "published_at";
 
 export function VideoTable({ videos, showChannel = false, privateCols = true, windowLabel = "28d" }: { videos: TopVideo[]; showChannel?: boolean; privateCols?: boolean; windowLabel?: string }) {
-  const [sort, setSort] = useState<Key>("views_window");
+  const [sort, setSort] = useState<Key>("published_at");
   const [visibleCount, setVisibleCount] = useState(20);
   const rows = [...videos].sort((a, b) => {
     if (sort === "published_at") return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
