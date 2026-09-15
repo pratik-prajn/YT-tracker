@@ -67,7 +67,7 @@ export function TrendChart({ data, uploads = [], onPickUpload }: { data: SeriesP
     for (const u of uploads) m.set(u.date, [...(m.get(u.date) ?? []), u]);
     return m;
   }, [uploads]);
-  const points = useMemo(() => data.map((d) => ({ ...d, y: d[metric] })), [data, metric]);
+  const points = useMemo(() => data.slice(1).map((d) => ({ ...d, y: d[metric] })), [data, metric]);
   const markers = useMemo(() => points.filter((p) => byDate.has(p.date)), [points, byDate]);
   const long = data.length > 60;
 
